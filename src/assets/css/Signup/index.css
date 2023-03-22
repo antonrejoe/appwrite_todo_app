@@ -1,0 +1,30 @@
+.signUpItemContainer {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.961);
+  padding: 1rem;
+  border-radius: 5%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.signUpItemContainer > * {
+  padding: 0.2rem;
+  margin: 2%;
+}
+
+.signUpItemContainer > div {
+  text-align: start;
+  margin: 3% 1%;
+}
+
+label {
+  text-align: start;
+  font-size: 0.7rem;
+}
+
+input {
+  padding: 1% 5.5%;
+  display: inline-block;
+}/*# sourceMappingURL=index.css.map */
