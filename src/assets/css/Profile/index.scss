@@ -1,0 +1,46 @@
+.signUp_direct {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.signUp_direct>img {
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    margin: auto;
+}
+
+.signUp_direct>* {
+    margin: 2%;
+}
+
+.navbar {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 9vh;
+    left: 0;
+    top: 0;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.585));
+    background: rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(2rem);
+}
+
+
+
+button.logout_btn {
+    margin: auto 2%;
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+}
+
+button.logout_btn:hover {
+    border-color: red;
+}

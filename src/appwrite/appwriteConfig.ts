@@ -16,5 +16,5 @@ client
 
 
 
-const databases = new Databases(client);
+export const databases = new Databases(client);
 

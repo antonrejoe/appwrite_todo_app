@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { account } from "../appwrite/appwriteConfig.ts"
-import {v4 as uuidv4 } from "uuid"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import "../assets/css/Signup/index.css";
-
 const Signup = () => {
   const navigate = useNavigate();
   const [user, setuser] = useState({
@@ -20,7 +18,7 @@ const Signup = () => {
     e.preventDefault()
 
     const promise = account.create(
-      uuidv4(),
+      crypto.randomUUID(),
       user.email,
       user.password,
       user.name
@@ -41,45 +39,27 @@ const Signup = () => {
 
   return (
     <>
-    <div class="signUpItemContainer">
-        Anata no
+      <div class="signUpItemContainer">
+          Anata no
 
-        <div>
-        <label htmlFor="name">Name</label>
-        <input 
-          id='name'
-          name="name"
-          type="text"
-          placeholder='moshi moshi'
-
-        onChange={ (e) => {
-          setuser({
-            ...user,
-            name:e.target.value
-          })
-        }}
-        />
-        </div>
-        <div>
-          <label htmlFor="name">Email</label>
-
+          <div>
+          <label htmlFor="name">Name</label>
           <input 
-          id='email'
-          name="email"
-          type="text"
-          placeholder='moshi moshi'
+            id='name'
+            name="name"
+            type="text"
+            placeholder='moshi moshi'
 
           onChange={ (e) => {
             setuser({
               ...user,
-              email:e.target.value
+              name:e.target.value
             })
           }}
-        />
-        </div>
-        
-        <div>
-        <label htmlFor="name">Password</label>
+          />
+          </div>
+          <div>
+            <label htmlFor="name">Email</label>
 
             <input 
             id='email'
@@ -90,14 +70,39 @@ const Signup = () => {
             onChange={ (e) => {
               setuser({
                 ...user,
-                password:e.target.value
+                email:e.target.value
               })
             }}
-            />
+          />
+          </div>
+          
+          <div>
+          <label htmlFor="name">Password</label>
+
+              <input 
+              id='password'
+              name="email"
+              type="text"
+              placeholder='moshi moshi'
+
+              onChange={ (e) => {
+                setuser({
+                  ...user,
+                  password:e.target.value
+                })
+              }}
+              />
+          </div>
+              
+          <button type="submit" onClick={signUpUser} class="submitBtn">Submit </button>
+
+
         </div>
-        
-      </div>
-      <input type="submit" onClick={signUpUser} class="submitBtn"/>
+          
+          <Link 
+           to="/Login" >Already an user ?</Link>
+
+            
     </>
     
   )

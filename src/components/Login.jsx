@@ -1,6 +1,6 @@
 import React from 'react'
 import {account} from "../appwrite/appwriteConfig.ts"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import "../assets/css/Login/index.css";
@@ -59,9 +59,9 @@ const navigate = useNavigate();
           })
       }}  
       />
-        <button onClick={loginUser}>Submit</button>
+        <button onClick={loginUser} class="login_btn">Submit</button>
       </div>
-     
+     <Link to="/signup" >Don't have an account ?</Link>
     </>
   )
 }
