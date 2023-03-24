@@ -61,7 +61,6 @@ const TodoForm = () => {
             add Todo
           </button>
         </form>
-        <div></div>
       </div>
     </>
   );
