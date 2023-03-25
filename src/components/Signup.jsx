@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { account } from "../appwrite/appwriteConfig.ts";
+import { account } from "../appwrite/appwriteConfig.js";
 import { Link, useNavigate } from "react-router-dom";
 
 import "../assets/css/Signup/index.css";
@@ -13,8 +13,16 @@ const Signup = () => {
   });
 
   const googleLogin = (e) => {
-    e.preventDefault();
-    account.createOAuth2Session("google", "http://localhost:4000/profile");
+    try {
+      e.preventDefault();
+      account.createOAuth2Session(
+        "google",
+        "http://localhost:4000/profile",
+        "http://localhost:4000/login"
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const signUpUser = async (e) => {

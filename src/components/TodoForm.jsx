@@ -1,17 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { account } from "../appwrite/appwriteConfig.ts";
-import { databases } from "../appwrite/appwriteConfig";
+import { account, databases } from "../appwrite/appwriteConfig.js";
 import "../assets/css/TodoForm/todoForm.css";
+import { Permission, Role } from "appwrite";
+import Todos from "./Todos";
 
 const TodoForm = () => {
   const [todo, setTodo] = useState({});
+  const [userDetails, setUserDetails] = useState();
+
   useEffect(() => {
     const promise = account.get();
-
-    promise.then(
+    const promise2 = promise.then(
       function (response) {
         setTodo(response);
+        setUserDetails(response.id);
+        console.log(response.name);
+        console.log(response);
       },
       function (error) {
         console.log(error);
@@ -27,7 +32,8 @@ const TodoForm = () => {
       crypto.randomUUID(),
       {
         content: todo.content,
-      }
+      },
+      []
     );
 
     promise.then(
@@ -62,6 +68,7 @@ const TodoForm = () => {
           </button>
         </form>
       </div>
+      <Todos />
     </>
   );
 };

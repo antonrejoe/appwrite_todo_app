@@ -1,5 +1,5 @@
 import React from "react";
-import { account } from "../appwrite/appwriteConfig.ts";
+import { account } from "../appwrite/appwriteConfig.js";
 import { Link, useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
 import { useState } from "react";

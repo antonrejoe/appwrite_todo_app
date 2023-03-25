@@ -1,30 +1,28 @@
-import React from 'react'
-import { useState,useEffect } from 'react'
-import databases from "../appwrite/appwriteConfig.ts"
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { databases } from "../appwrite/appwriteConfig.js";
+import { account } from "../appwrite/appwriteConfig.js";
 const Todos = () => {
+  const [getDoc, setGetDoc] = useState();
+  // const check = getDoc.name == account.name;
 
-  const [todos, setTodos] = useState()
-
-  const [loader, setLoader] = useState(false)
-  
   useEffect(() => {
-   setLoader(true)
-   const getTodos = databases.listDocuments("64187e3b0c4e988035e2")
+    const promise = databases.listDocuments(
+      "64187e3b0c4e988035e2",
+      "64187e5258a86452f64d"
+    );
 
-   getTodos.then(
-    function (response) {
-      setTodos(response.document)
-    },function(error){
-      console.log(error);
-    }
-   )
-  }, [])
-  
+    promise.then(
+      function (response) {
+        setGetDoc(response.documents);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  }, [getDoc]);
 
-  return (
-    <div>Todos</div>
-  )
-}
+  return <>{getDoc && getDoc.map((item) => <li>{item.content}</li>)}</>;
+};
 
-export default Todos
+export default Todos;
